@@ -1,12 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-
-const App = (props) => {
-  return (
-    <h1>React Baby</h1>
-  )
-}
+import App from './components/app';
 
 const appContainer = document.getElementById('root');
 
