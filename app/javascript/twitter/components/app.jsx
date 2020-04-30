@@ -1,16 +1,13 @@
 import React from 'react';
 
+import Console from '../containers/console';
 import SideBar from './side_bar';
-import PostBox from './post_box';
-import Feed from '../containers/feed';
-
 
 const App = (props) => {
   return (
     <div>
       <SideBar />
-      <PostBox />
-      <Feed />
+      <Console />
     </div>
   )
 }
