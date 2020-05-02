@@ -4,9 +4,11 @@ class PostBox extends Component {
   constructor(props){
     super(props);
     this.state = {
-      course: {
-        id: 3, 
-        name: "User 3"
+      post: {
+        id: 20, 
+        name: "User 3",
+        title: '',
+        content: ''
       }
     }
     this.onSubmit = this.onSubmit.bind(this);
@@ -15,24 +17,29 @@ class PostBox extends Component {
 
   onSubmit(event){
     event.preventDefault();
-    this.props.savePost(this.state.course);
+    this.props.savePost(this.state.post);
     this.setState({
-      course: {
+      post: {
         id: 3, 
-        name: "User 3"
+        name: "User 3",
+        title: '',
+        content: ''
       }
     });
   }
 
   onChange(event){
-    this.setState({ text: event.target.value });
+    const field = event.target.name;
+    let post = Object.assign({}, this.state.post)
+    post[field] = event.target.value;
+    return this.setState({post: post});
   }
   render() {
     return (
       <div>
         <form onSubmit={this.onSubmit}>
-          <input type='text' value={this.state.course.title} onChange={this.onChange}></input>
-          <textarea value={this.state.course.content} onChange={this.onChange}>
+          <input name='title' type='text' value={this.state.post.title} onChange={this.onChange}></input>
+          <textarea name='content' value={this.state.post.content} onChange={this.onChange}>
           </textarea>
           <button type='submit'>Post</button>
         </form>

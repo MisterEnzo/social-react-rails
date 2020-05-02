@@ -6,7 +6,7 @@ const Feed = (props) => {
   
   let posts = props.data.map((post) => {
     return (
-      <Post key={ post.id } {...post} />
+      <Post {...post} />
     );
   });
 

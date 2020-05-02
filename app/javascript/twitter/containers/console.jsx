@@ -17,8 +17,8 @@ class Console extends Component {
   }
 
 
-  savePost(course){
-    this.setState({ data: [ ...this.state.data, Object.assign({}, course)] });
+  savePost(post){
+    this.setState({ data: [ ...this.state.data, Object.assign({}, post)] });
   }
 
   render() {
