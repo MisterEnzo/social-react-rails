@@ -13,13 +13,19 @@ class Console extends Component {
         {id: 3, name: "User 3", title: "Third post", content: "its the third post!"}
       ]
     }
+    this.savePost = this.savePost.bind(this)
+  }
+
+
+  savePost(course){
+    this.setState({ data: [ ...this.state.data, Object.assign({}, course)] });
   }
 
   render() {
     return(
       <div>
         <Feed data={this.state.data} />
-        <PostBox /> 
+        <PostBox savePost={this.savePost} /> 
       </div>
     )
   }

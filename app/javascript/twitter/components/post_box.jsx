@@ -4,9 +4,24 @@ class PostBox extends Component {
   constructor(props){
     super(props);
     this.state = {
-      text: ''
+      course: {
+        id: 3, 
+        name: "User 3"
+      }
     }
+    this.onSubmit = this.onSubmit.bind(this);
     this.onChange = this.onChange.bind(this);
+  }
+
+  onSubmit(event){
+    event.preventDefault();
+    this.props.savePost(this.state.course);
+    this.setState({
+      course: {
+        id: 3, 
+        name: "User 3"
+      }
+    });
   }
 
   onChange(event){
@@ -15,8 +30,9 @@ class PostBox extends Component {
   render() {
     return (
       <div>
-        <form>
-          <textarea value={this.state.value} onChange={this.onChange}>
+        <form onSubmit={this.onSubmit}>
+          <input type='text' value={this.state.course.title} onChange={this.onChange}></input>
+          <textarea value={this.state.course.content} onChange={this.onChange}>
           </textarea>
           <button type='submit'>Post</button>
         </form>
