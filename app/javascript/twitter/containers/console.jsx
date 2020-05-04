@@ -23,7 +23,7 @@ class Console extends Component {
 
   render() {
     return(
-      <div>
+      <div className='ui center aligned container'>
         <Feed data={this.state.data} />
         <PostBox savePost={this.savePost} /> 
       </div>

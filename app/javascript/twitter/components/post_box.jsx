@@ -20,7 +20,7 @@ class PostBox extends Component {
     this.props.savePost(this.state.post);
     this.setState({
       post: {
-        id: 3, 
+        id: Date.now(), 
         name: "User 3",
         title: '',
         content: ''
