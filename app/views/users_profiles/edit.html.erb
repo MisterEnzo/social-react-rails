@@ -1,0 +1,6 @@
+<h2>Profile</h2>
+gravatar
+
+<%= form_with model: @user, url: '/profile', method: 'patch' do |f| %>
+  <%= f.text_field :name %>
+<% end %>
