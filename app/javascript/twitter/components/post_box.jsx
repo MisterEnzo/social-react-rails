@@ -7,7 +7,6 @@ class PostBox extends Component {
       post: {
         id: 20, 
         name: "User 3",
-        title: '',
         content: ''
       }
     }
@@ -22,7 +21,6 @@ class PostBox extends Component {
       post: {
         id: Date.now(), 
         name: "User 3",
-        title: '',
         content: ''
       }
     });
@@ -38,7 +36,6 @@ class PostBox extends Component {
     return (
       <div>
         <form onSubmit={this.onSubmit}>
-          <input name='title' type='text' value={this.state.post.title} onChange={this.onChange}></input>
           <textarea name='content' value={this.state.post.content} onChange={this.onChange}>
           </textarea>
           <button type='submit'>Post</button>
