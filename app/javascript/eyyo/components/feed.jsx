@@ -4,11 +4,17 @@ import Post from './post';
 
 const Feed = (props) => {
   
-  let posts = props.data.map((post) => {
+  if (!props.posts) {
     return (
-      <Post key={post.id} {...post} />
-    );
-  });
+      <div>Loading ...</div>
+    )
+  }
+  
+  let posts = props.posts.map((post) => {
+    return (
+      <Post key={post.id} { ...post } />
+    )
+  })
 
   return (
     <div className="posts-feed">
