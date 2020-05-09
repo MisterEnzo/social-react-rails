@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import Feed from '../components/feed';
 import PostBox from '../components/post_box';
@@ -6,13 +8,7 @@ import PostBox from '../components/post_box';
 class Console extends Component {
   constructor(props){
     super(props);
-    this.state = {
-      data: [
-        {id: 1, name: "User 1", content: "its the first post!"},
-        {id: 2, name: "User 2", content: "its the second post!"},
-        {id: 3, name: "User 3", content: "its the third post!"}
-      ]
-    }
+  
     this.savePost = this.savePost.bind(this)
   }
 
@@ -24,11 +20,17 @@ class Console extends Component {
   render() {
     return(
       <div className='ui center aligned container'>
-        <Feed data={this.state.data} />
+        <Feed data={this.props.posts} />
         <PostBox savePost={this.savePost} /> 
       </div>
     )
   }
 }
 
-export default Console;
+function mapStateToProps(state) {
+  return {
+    posts: state.posts
+  }
+}
+
+export default connect(mapStateToProps)(Console);
