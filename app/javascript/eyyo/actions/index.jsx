@@ -1,7 +1,6 @@
 import * as types from './action_types';
 
 export function fetchPosts() {
-  console.log("fetching posts");
   return fetch(`/api/v1/posts`, { credentials: "same-origin" })
   .then((response) => {
     console.log(response);
@@ -10,5 +9,21 @@ export function fetchPosts() {
   .then((data) => {
     console.log(data);
     return { type: types.FETCH_POSTS, posts: data };
+  });
+}
+
+export function sendPost(post) {
+  const body = { post: {content: post}};
+  const url = '/api/v1/posts'
+  const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
+  const promise = fetch(url, {
+    credentials: "same-origin",
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'X-CSRF-Token': csrfToken
+    },
+    body: JSON.stringify(body)
   });
 }
