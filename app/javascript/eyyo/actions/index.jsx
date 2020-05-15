@@ -26,4 +26,5 @@ export function sendPost(post) {
     },
     body: JSON.stringify(body)
   });
+  return { type: types.SEND_POST, post: post }
 }

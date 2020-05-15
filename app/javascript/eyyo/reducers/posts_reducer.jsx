@@ -5,6 +5,8 @@ function postsReducer(state = initialState.posts, action){
   switch (action.type){
     case types.FETCH_POSTS:
       return action.posts;
+    case types.SEND_POST:
+      return action.post;
     default:
       return state;
   }
