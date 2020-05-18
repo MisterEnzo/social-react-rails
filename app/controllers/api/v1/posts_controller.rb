@@ -5,7 +5,7 @@ class Api::V1::PostsController < ApplicationController
   end
 
   def create
-    post = Post.build(post_params)
+    post = Post.new(post_params)
     post.user = current_user
     post.save
     render json: post

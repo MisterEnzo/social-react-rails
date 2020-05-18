@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import { sendPost } from '../actions/index';
+
 
 class PostBox extends Component {
   constructor(props){
     super(props);
     this.state = {
       post: {
-        id: 20, 
-        name: "User 3",
         content: ''
       }
     }
@@ -16,11 +19,9 @@ class PostBox extends Component {
 
   onSubmit(event){
     event.preventDefault();
-    this.props.savePost(this.state.post);
+    this.props.sendPost(this.state.post.content);
     this.setState({
       post: {
-        id: Date.now(), 
-        name: "User 3",
         content: ''
       }
     });
@@ -45,4 +46,11 @@ class PostBox extends Component {
   }
 }
 
-export default PostBox;
+function mapDispatchToProps(dispatch){
+  return bindActionCreators(
+    { sendPost: sendPost },
+    dispatch
+  );
+}
+
+export default connect(null, mapDispatchToProps)(PostBox);
