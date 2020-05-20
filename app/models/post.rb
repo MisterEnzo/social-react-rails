@@ -4,6 +4,7 @@ class Post < ApplicationRecord
 
   def as_json(options={})
     {
+      id: id,
       username: self.user.name,  
       content: content,
       timeStamp: created_at

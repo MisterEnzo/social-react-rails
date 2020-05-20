@@ -6,6 +6,10 @@ function postsReducer(state = initialState.posts, action){
     case types.FETCH_POSTS:
       return action.posts;
     case types.SEND_POST:
+      return [
+        ...state,
+        Object.assign({}, action.post)
+      ];
       return state;
     default:
       return state;

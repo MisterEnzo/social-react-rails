@@ -3,11 +3,9 @@ import * as types from './action_types';
 export function fetchPosts() {
   return fetch(`/api/v1/posts`, { credentials: "same-origin" })
   .then((response) => {
-    console.log(response);
     return response.json();
   })
   .then((data) => {
-    console.log(data);
     return { type: types.FETCH_POSTS, posts: data };
   });
 }
@@ -16,7 +14,8 @@ export function sendPost(post) {
   const body = { post: {content: post}};
   const url = '/api/v1/posts'
   const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
-  const promise = fetch(url, {
+  
+  return fetch(url, {
     credentials: "same-origin",
     method: 'POST',
     headers: {
@@ -25,6 +24,11 @@ export function sendPost(post) {
       'X-CSRF-Token': csrfToken
     },
     body: JSON.stringify(body)
+  })
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+    return { type: types.SEND_POST, post: data }
   });
-  return { type: types.SEND_POST, post: promise }
 }
