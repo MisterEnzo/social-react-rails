@@ -3,4 +3,5 @@ json.array! @posts do |post|
   json.username post.user.name
   json.content post.content
   json.timeStamp time_ago_in_words(post.created_at)
+  json.gravatar post.gravatar
 end
