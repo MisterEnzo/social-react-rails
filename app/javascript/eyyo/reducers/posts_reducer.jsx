@@ -7,8 +7,8 @@ function postsReducer(state = initialState.posts, action){
       return action.posts;
     case types.SEND_POST:
       return [
-        ...state,
-        Object.assign({}, action.post)
+        Object.assign({}, action.post),
+        ...state
       ];
       return state;
     default:

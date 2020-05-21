@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  include ActionView::Helpers
   belongs_to :user
   validates :content, presence: true
 
@@ -7,7 +8,7 @@ class Post < ApplicationRecord
       id: id,
       username: self.user.name,  
       content: content,
-      timeStamp: created_at
+      timeStamp: time_ago_in_words(created_at)
     }
   end
 end
