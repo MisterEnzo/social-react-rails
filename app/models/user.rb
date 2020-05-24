@@ -5,4 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :posts
+
+  def gravatar
+    hash = Digest::MD5.hexdigest(self.user.email)
+    "https://www.gravatar.com/avatar/#{hash}"
+  end
+  
 end
