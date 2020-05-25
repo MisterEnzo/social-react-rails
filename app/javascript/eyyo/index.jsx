@@ -20,7 +20,9 @@ const appContainer = document.getElementById('root');
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     <Provider store={store}>
-      <App />
+      <BrowserRouter>
+        <Route path="/" component={App} />
+      </BrowserRouter>
     </Provider>, 
     appContainer
   );
