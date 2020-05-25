@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :posts
 
   def gravatar
-    hash = Digest::MD5.hexdigest(self.user.email)
+    hash = Digest::MD5.hexdigest(self.email)
     "https://www.gravatar.com/avatar/#{hash}"
   end
   
