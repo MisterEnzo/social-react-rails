@@ -10,4 +10,6 @@ Rails.application.routes.draw do
       get '/follow_list', to: 'relationships#follow_list'
     end
   end
+
+  get '/follow', to: 'static_pages#home'
 end
