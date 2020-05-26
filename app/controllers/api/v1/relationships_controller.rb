@@ -2,7 +2,7 @@ class Api::V1::RelationshipsController < ApplicationController
   before_action :authenticate_user!
 
   def follow_list
-    render json: User.where(["id != ?", current_user.id]).order("random()").all
+    render json: User.follow_list(current_user)
   end
 
   def create
