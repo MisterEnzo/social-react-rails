@@ -29,6 +29,16 @@ export function sendPost(post) {
     return response.json();
   })
   .then((data) => {
-    return { type: types.SEND_POST, post: data }
+    return { type: types.SEND_POST, post: data };
   });
+}
+
+export function fetchFollows(){
+  return fetch(`/api/v1/follows`, { credentials: "same-origin" })
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+    return { type: types.FETCH_FOLLOWS, follows: data };
+  })
 }

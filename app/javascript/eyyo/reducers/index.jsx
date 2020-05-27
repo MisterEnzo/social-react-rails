@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 import posts from './posts_reducer';
+import follows from './follows_reducer';
 
 const rootReducer = combineReducers({
-  posts
+  posts,
+  follows
 });
 
 export default rootReducer;
