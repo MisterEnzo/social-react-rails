@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import fetchFollows from '../actions/index';
+import { fetchFollows } from '../actions/index';
 
 class Follows extends Component {
   constructor(props) {
@@ -10,7 +10,7 @@ class Follows extends Component {
   }
 
   componentDidMount() {
-    // this.props.fetchFollows();
+    this.props.fetchFollows();
   }
 
 

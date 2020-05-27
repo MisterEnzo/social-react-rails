@@ -34,7 +34,7 @@ export function sendPost(post) {
 }
 
 export function fetchFollows(){
-  return fetch(`/api/v1/follows`, { credentials: "same-origin" })
+  return fetch(`/api/v1/follow_list`, { credentials: "same-origin" })
   .then((response) => {
     return response.json();
   })
