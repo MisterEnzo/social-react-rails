@@ -32,5 +32,13 @@ class User < ApplicationRecord
     hash = Digest::MD5.hexdigest(self.email)
     "https://www.gravatar.com/avatar/#{hash}"
   end
+
+  def as_json(options={})
+    {
+      id: self.id,
+      username: self.name,
+      gravatar: self.gravatar
+    }
+  end
   
 end

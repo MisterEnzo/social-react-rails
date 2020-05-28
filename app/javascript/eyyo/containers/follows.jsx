@@ -4,6 +4,8 @@ import { bindActionCreators } from 'redux';
 
 import { fetchFollows } from '../actions/index';
 
+import Follow from '../components/follow';
+
 class Follows extends Component {
   constructor(props) {
     super(props);
@@ -13,11 +15,10 @@ class Follows extends Component {
     this.props.fetchFollows();
   }
 
-
   render() {
     let follows = this.props.follows.map((follow) => {
       return (
-        <p>User</p>
+        <Follow key={follow.id} {...follow} />
       )
     })
     return (
