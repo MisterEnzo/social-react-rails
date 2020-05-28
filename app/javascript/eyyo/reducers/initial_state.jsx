@@ -1,4 +1,4 @@
 export default {
   posts: [],
-  follows: []
+  followables: []
 }

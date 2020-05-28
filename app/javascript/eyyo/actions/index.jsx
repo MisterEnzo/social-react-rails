@@ -33,12 +33,16 @@ export function sendPost(post) {
   });
 }
 
-export function fetchFollows(){
+export function fetchFollowables(){
   return fetch(`/api/v1/follow_list`, { credentials: "same-origin" })
   .then((response) => {
     return response.json();
   })
   .then((data) => {
-    return { type: types.FETCH_FOLLOWS, follows: data };
+    return { type: types.FETCH_FOLLOWABLES, followables: data };
   })
+}
+
+export function sendFollow() {
+  return fetch(`/api/v1/relation`)
 }

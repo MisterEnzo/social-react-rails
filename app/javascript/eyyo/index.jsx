@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import promiseMiddleware from 'redux-promise';
 
 import App from './components/app';
-import Follows from './containers/follows';
+import Followables from './containers/followables';
 
 import rootReducer from './reducers/index';
 
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <Provider store={store}>
       <BrowserRouter>
         <Route strict exact path="/" component={App} />
-        <Route strict exact path="/follow" component={Follows} />
+        <Route strict exact path="/follow" component={Followables} />
       </BrowserRouter>
     </Provider>, 
     appContainer

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :posts
       get '/follow_list', to: 'relationships#follow_list'
+      resources :relationships, only: [:create, :destroy]
     end
   end
 
