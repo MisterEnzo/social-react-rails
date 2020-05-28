@@ -11,17 +11,17 @@ export function fetchPosts() {
 }
 
 export function sendPost(post) {
-  const body = { post: {content: post}};
+  const body = { post: { content: post } };
   const url = '/api/v1/posts'
   const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
   
   return fetch(url, {
     credentials: "same-origin",
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'X-CSRF-Token': csrfToken
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+      "X-CSRF-Token": csrfToken
     },
     body: JSON.stringify(body)
   })
@@ -43,6 +43,24 @@ export function fetchFollowables(){
   })
 }
 
-export function sendFollow() {
-  return fetch(`/api/v1/relation`)
+export function Follow(userId) {
+  const body = { user: { user.id } };
+  const url = `/api/v1/relationships`;
+  const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
+  return fetch(url, {
+    credentials: "same-origin",
+    method: "POST",
+    headers: {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+      "X-CSRF-Token": csrfToken
+    },
+    body: JSON.stringify(body)
+  })
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+    return { type: types.FOLLOW, follow: data }
+  })
 }
