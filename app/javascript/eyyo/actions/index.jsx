@@ -43,8 +43,8 @@ export function fetchFollowables(){
   })
 }
 
-export function Follow(userId) {
-  const body = { user: { user.id } };
+export function follow(userId) {
+  const body = { user: { user_id: userId } };
   const url = `/api/v1/relationships`;
   const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
   return fetch(url, {
