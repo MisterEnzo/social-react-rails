@@ -8,6 +8,9 @@ export default function followablesReducer(state = initialState.followables, act
     case types.FOLLOW:
       console.log(action.data);
       return state;
+    case types.UNFOLLOW:
+      console.log(action.data);
+      return state;
     default:
       return state;
   }

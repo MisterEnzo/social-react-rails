@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { fetchFollowables, follow } from '../actions/index';
+import { fetchFollowables, follow, unfollow } from '../actions/index';
 
 import Followable from '../components/followable';
 
@@ -15,15 +15,23 @@ class Followables extends Component {
     this.props.fetchFollowables();
   }
 
-  handleFollow(event){
-    console.log(event);
-    console.log("haha");
+  handleFollow(userId){
+    console.log(`following user ${userId}`);
+    // console.log(this.props);
   }
+
+  handleUnfollow(userId){
+    console.log(`unfollowing user ${userId}`);
+    // this.props.unfollow(userId);
+  }
+
+  this.handleFollow = this.handdleFollow.bind(this);
+  this.handleUnfollow = this.handleUnfollow.bind(this);
 
   render() {
     let followables = this.props.followables.map((follow) => {
       return (
-        <Followable key={follow.id} {...follow} follow={this.handleFollow } />
+        <Followable key={follow.id} {...follow} follow={this.handleFollow}  unfollow={this.handleUnfollow} />
       )
     })
     return (
@@ -44,7 +52,8 @@ function mapDispatchToProps(dispatch){
   return bindActionCreators(
     {
       fetchFollowables: fetchFollowables,
-      follow: follow
+      follow: follow,
+      unfollow: unfollow
     },
     dispatch
   )
