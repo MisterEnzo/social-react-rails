@@ -4,8 +4,15 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :posts
-  has_many :relationships
+  has_many :posts, dependent: :destroy
+  has_many :following_relationships, class_name: "Relationship",
+                                    foreign_key: "follower_id",
+                                    dependent: :destroy
+  has_many :followed_relationships, class_name: "Relationship",
+                                    foreign_key: "followed_id",
+                                    dependent: :destroy
+  has_many :followings, through: :following_relationships, source: :followed
+  has_many :followers, through: :followed_relationships, source: :follower
 
   def self.follow_list(current_user)
     where("id != ?", current_user.id)
