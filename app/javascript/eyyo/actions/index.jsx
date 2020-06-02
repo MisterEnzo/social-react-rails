@@ -71,6 +71,11 @@ export function unfollow(userId) {
   return fetch(url, {
     credentials: "same-origin",
     method: "DELETE",
+    headers: {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+      "X-CSRF-Token": csrfToken
+    }
   })
   .then((response) => {
     return response.json();

@@ -9,6 +9,9 @@ import Followable from '../components/followable';
 class Followables extends Component {
   constructor(props) {
     super(props);
+
+    this.handleFollow = this.handleFollow.bind(this);
+    this.handleUnfollow = this.handleUnfollow.bind(this);
   }
 
   componentDidMount() {
@@ -17,16 +20,13 @@ class Followables extends Component {
 
   handleFollow(userId){
     console.log(`following user ${userId}`);
-    // console.log(this.props);
+    this.props.follow(userId);
   }
 
   handleUnfollow(userId){
     console.log(`unfollowing user ${userId}`);
-    // this.props.unfollow(userId);
+    this.props.unfollow(userId);
   }
-
-  this.handleFollow = this.handdleFollow.bind(this);
-  this.handleUnfollow = this.handleUnfollow.bind(this);
 
   render() {
     let followables = this.props.followables.map((follow) => {
