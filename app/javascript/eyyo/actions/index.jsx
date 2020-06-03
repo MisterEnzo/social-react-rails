@@ -84,3 +84,23 @@ export function unfollow(userId) {
     return {type: types.UNFOLLOW, unfollow: data};
   })
 }
+
+export function fetchFollowers(){
+  return fetch('api/v1/followers', {credentials: "same-origin"})
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      return {type: types.FETCH_FOLLOWERS, followers: data};
+    })
+}
+
+export function fetchFollowing(){
+  return fetch('api/v1/following', {credentials: "same-origin"})
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      return {type: types.FETCH_FOLLOWING, following: data};
+    })
+}

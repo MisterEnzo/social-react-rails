@@ -3,3 +3,5 @@ export const SEND_POST = 'SEND_POST';
 export const FETCH_FOLLOWABLES = 'FETCH_FOLLOWABLES';
 export const FOLLOW = 'FOLLOW';
 export const UNFOLLOW = 'UNFOLLOW';
+export const FETCH_FOLLOWERS = 'FETCH_FOLLOWERS';
+export const FETCH_FOLLOWING = 'FETCH_FOLLOWING';
